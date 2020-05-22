@@ -37,5 +37,5 @@ security:
 #      check-token-access: http://localhost:7998/oauth/check_token
     resource:
       jwt:
-        key-uri: http://localhost:7998/oauth/token_key
+#        key-uri: http://localhost:7998/oauth/token_key
         key-value: zachary
