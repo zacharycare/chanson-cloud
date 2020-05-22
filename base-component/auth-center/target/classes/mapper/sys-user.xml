@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:填写映射当前的Mapper接口，所有的增删改查的参数和返回值类型，
+		就可以直接填写缩写，不区分大小写，直接通过方法名去找类型-->
+<mapper namespace="com.zachary.chanson.base.auth.mapper.SysUserMapper">
+    <!-- 查询用户角色 -->
+    <select id="selectSysUserRole" parameterType="java.lang.String" resultType="java.lang.String">
+        select r.role_name from zxxr.sys_user u,zxxr.sys_user_role ur,zxxr.sys_role r where u.id = ur.sys_user_id and ur.sys_role_id = r.id
+        and u.status = 1 and ur.status = 1 and r.status = 1 and u.username = #{username}
+    </select>
+</mapper>

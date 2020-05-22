@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/base-component/auth-center/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-component/common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/base-component/eureka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/base-component/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/base-component/monitor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-component/sys-base-data/src/main/java" charset="UTF-8" />
   </component>
 </project>

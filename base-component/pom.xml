@@ -16,6 +16,9 @@
         <module>eureka</module>
         <module>monitor</module>
         <module>gateway</module>
+        <module>auth-center</module>
+        <module>common</module>
+        <module>sys-base-data</module>
     </modules>
 
 
