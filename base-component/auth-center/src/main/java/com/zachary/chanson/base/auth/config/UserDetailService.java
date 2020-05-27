@@ -27,7 +27,7 @@ public class UserDetailService implements UserDetailsService {
         //feign 查询用户
         SysUser sysUserTemp = new SysUser();
         sysUserTemp.setUsername(s);
-        sysUserTemp.setStatus(1);
+        sysUserTemp.setStatus('1');
         SysUser sysUser = sysUserService.getOne(new QueryWrapper<SysUser>(sysUserTemp));
         if (sysUser == null) {
             throw new UsernameNotFoundException("the user not found");

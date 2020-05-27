@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @TableName("sys_user")
@@ -12,6 +13,7 @@ public class SysUser implements Serializable {
     private String username;
     private String password;
     private String email;
-    private int status;
+    private char status;
     private String createdBy;
+    private Date createdDate;
 }
