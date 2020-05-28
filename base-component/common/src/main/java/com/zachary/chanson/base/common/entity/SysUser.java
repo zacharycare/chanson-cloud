@@ -1,5 +1,6 @@
 package com.zachary.chanson.base.common.entity;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -16,4 +17,6 @@ public class SysUser implements Serializable {
     private char status;
     private String createdBy;
     private Date createdDate;
+    @TableLogic
+    private Integer deleted;
 }
