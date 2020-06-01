@@ -29,6 +29,11 @@ Vue.use(VueRouter)
       component: () => import(/* webpackChunkName: "about" */ '../views/Console.vue'),
       children: [
         {
+          path: '',
+          name: 'ConsoleHome',
+          component: () => import(/* webpackChunkName: "about" */ '../components/ConsoleHome.vue')
+        },
+        {
           path: 'menu1',
           name: 'Menu1',
           component: () => import(/* webpackChunkName: "about" */ '../components/Menu1.vue')
