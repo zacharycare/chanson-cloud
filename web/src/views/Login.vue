@@ -27,6 +27,7 @@
         methods: {
             onSubmit() {
                 console.log('submit!');
+                this.$router.push("/console");
             }
         }
     }

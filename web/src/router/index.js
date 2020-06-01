@@ -22,6 +22,23 @@ Vue.use(VueRouter)
       path: '/login',
       name: 'Login',
       component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+    },
+    {
+      path: '/console',
+      name: 'Console',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Console.vue'),
+      children: [
+        {
+          path: 'menu1',
+          name: 'Menu1',
+          component: () => import(/* webpackChunkName: "about" */ '../components/Menu1.vue')
+        },
+        {
+          path: 'menu2',
+          name: 'Menu2',
+          component: () => import(/* webpackChunkName: "about" */ '../components/Menu2.vue')
+        }
+      ]
     }
 ]
 
