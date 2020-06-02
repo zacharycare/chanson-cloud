@@ -39,12 +39,12 @@ public class ExcelUtil<T> {
             XSSFRow dataRow = sheet.createRow(i + 1);
             T t = list.get(i);
             Field[] fields = t.getClass().getDeclaredFields();      //不能保证字段按声明顺序
-            for (int i1 = 0; i1 < fields.length; i1++) {
-                Field field = fields[i1];
+            for (int j = 0; j < fields.length; j++) {
+                Field field = fields[j];
                 String name = field.getName();
                 field.setAccessible(true);
                 Object value = field.get(t);
-                dataRow.createCell(i1).setCellValue(String.valueOf(value));
+                dataRow.createCell(j).setCellValue(String.valueOf(value));
             }
         }
 
