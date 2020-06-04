@@ -39,9 +39,14 @@ Vue.use(VueRouter)
           component: () => import(/* webpackChunkName: "about" */ '../components/Menu1.vue')
         },
         {
-          path: 'menu2',
-          name: 'Menu2',
-          component: () => import(/* webpackChunkName: "about" */ '../components/Menu2.vue')
+          path: 'sysUserSave',
+          name: 'sysUserSave',
+          component: () => import(/* webpackChunkName: "about" */ '../components/sysUser/save.vue')
+        },
+        {
+          path: 'sysUserInfo',
+          name: 'sysUserInfo',
+          component: () => import(/* webpackChunkName: "about" */ '../components/sysUser/sysUserInfo.vue')
         }
       ]
     }

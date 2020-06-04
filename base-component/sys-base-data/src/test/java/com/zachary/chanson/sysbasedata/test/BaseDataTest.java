@@ -3,6 +3,8 @@ package com.zachary.chanson.sysbasedata.test;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zachary.chanson.base.common.entity.SysUser;
 import com.zachary.chanson.base.sysbasedata.SysBaseDataApplication;
+import com.zachary.chanson.base.sysbasedata.mapper.SysPermissionsMapper;
+import com.zachary.chanson.base.sysbasedata.service.SysPermissionsService;
 import com.zachary.chanson.base.sysbasedata.service.SysUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +23,10 @@ public class BaseDataTest {
     SysUserService sysUserService;
 //    @Autowired
 //    SysRoleService sysRoleService;
+    @Autowired
+    SysPermissionsService sysPermissionsService;
+    @Autowired
+    SysPermissionsMapper sysPermissionsMapper;
 
     @Test
     public void contextLoads() {
@@ -56,5 +62,12 @@ public class BaseDataTest {
         sysUserTemp.setStatus('0');
         SysUser sysUser = sysUserService.getOne(new QueryWrapper<SysUser>(sysUserTemp));
         System.out.println(sysUser);
+    }
+
+    @Test
+    public void contextLoadsSysPermissions() {
+        System.out.println("======test======");
+        System.out.println(sysPermissionsService.selectSysPermissionsCount());
+        System.out.println(sysPermissionsMapper.selectSysPermissionsCount());
     }
 }

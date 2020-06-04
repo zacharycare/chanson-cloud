@@ -3,8 +3,8 @@
         <el-header>Header</el-header>
         <el-container>
             <el-aside width="200px">
-                <router-link :to="{name: 'Menu1'}">菜单1</router-link> |
-                <router-link :to="{name: 'Menu2'}">菜单2</router-link>
+                <router-link :to="{name: 'sysUserInfo'}">用户管理</router-link> |
+                <router-link :to="{name: 'sysUserSave'}">保存用户</router-link>
             </el-aside>
             <el-main>
                 <router-view/>
