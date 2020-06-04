@@ -1,10 +1,14 @@
 <template>
-    <el-form :model="infoForm" ref="infoForm" :rules="infoRules" :label-position="left" label-width="80px">
+    <el-form :model="infoForm" ref="infoForm" :rules="infoRules" :label-position="labelPosition" label-width="80px">
         <el-form-item label="用户名" prop="username">
             <el-input v-model="infoForm.username"></el-input>
         </el-form-item>
         <el-form-item label="邮箱" prop="email">
             <el-input v-model="infoForm.email"></el-input>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="submitForm('infoForm')">立即创建</el-button>
+            <el-button @click="resetForm('infoForm')">重置</el-button>
         </el-form-item>
     </el-form>
 </template>
@@ -14,6 +18,7 @@
         name: "sysUserSave",
         data() {
             return {
+                labelPosition: 'left',
                 infoForm: {
                     username: '',
                     email: ''
@@ -30,7 +35,7 @@
         },
         methods: {
             submitForm(formName) {
-                this.$ref[formName].validate((valid) => {
+                this.$refs[formName].validate((valid) => {
                     if (valid) {
                         alert("submit success");
                     } else {
@@ -38,6 +43,9 @@
                         return false;
                     }
                 });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
             }
         }
     }
