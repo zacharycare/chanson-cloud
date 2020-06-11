@@ -1,10 +1,21 @@
 <template>
-    <div>控制台欢迎页面</div>
+    <div>
+        <el-button @click="onSubmit">下载文件</el-button>
+    </div>
 </template>
 
 <script>
     export default {
-        name: "ConsoleHome"
+        name: "ConsoleHome",
+        methods: {
+            onSubmit() {
+                console.log('submit!');
+                this.axios.get("/api/download").then((res) => {
+                    console.log("-----------------")
+                    console.log(res.data);
+                });
+            }
+        }
     }
 </script>
 
