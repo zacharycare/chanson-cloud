@@ -27,6 +27,15 @@
         methods: {
             onSubmit() {
                 console.log('submit!');
+                this.axios({
+                    method: 'POST',
+                    url: '/api/oauth/token?grant_type=password&username=' + this.form.name + '&password=' + this.form.password + '&scope=all',
+                    headers: {'Authorization': 'Basic c3lzLWJhc2UtZGF0YTp1c2VyLXNlY3JldC04ODg4'}
+                }).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                });
                 this.$router.push("/console");
             }
         }

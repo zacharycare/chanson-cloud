@@ -18,17 +18,20 @@ import java.util.List;
 @Service
 @Slf4j
 public class UserDetailService implements UserDetailsService {
-    @Autowired
+    final
     SysUserService sysUserService;
+
+    public UserDetailService(SysUserService sysUserService) {
+        this.sysUserService = sysUserService;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         log.info("UserDetailService--username is {}",s);
-        //feign 查询用户
         SysUser sysUserTemp = new SysUser();
         sysUserTemp.setUsername(s);
         sysUserTemp.setStatus('1');
-        SysUser sysUser = sysUserService.getOne(new QueryWrapper<SysUser>(sysUserTemp));
+        SysUser sysUser = sysUserService.getOne(new QueryWrapper<>(sysUserTemp));
         if (sysUser == null) {
             throw new UsernameNotFoundException("the user not found");
         } else {
