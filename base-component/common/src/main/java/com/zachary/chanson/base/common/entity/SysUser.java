@@ -14,7 +14,7 @@ public class SysUser implements Serializable {
     private String username;
     private String password;
     private String email;
-    private char status;
+    private char status = '1';
     private String createdBy;
     private Date createdDate;
     @TableLogic

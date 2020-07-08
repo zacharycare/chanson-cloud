@@ -3,6 +3,9 @@
         <el-form-item label="用户名" prop="username">
             <el-input v-model="infoForm.username"></el-input>
         </el-form-item>
+        <el-form-item label="密码" prop="password">
+            <el-input v-model="infoForm.password"></el-input>
+        </el-form-item>
         <el-form-item label="邮箱" prop="email">
             <el-input v-model="infoForm.email"></el-input>
         </el-form-item>
@@ -21,6 +24,7 @@
                 labelPosition: 'left',
                 infoForm: {
                     username: '',
+                    password: '',
                     email: ''
                 },
                 infoRules: {
@@ -37,7 +41,15 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert("submit success");
+                        this.axios({
+                            method: 'POST',
+                            url: '/sys-base-data/save',
+                            data: JSON.stringify(this.infoForm)
+                        }).then(function (response) {
+                            console.log(response);
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
                     } else {
                         console.log("no validate");
                         return false;

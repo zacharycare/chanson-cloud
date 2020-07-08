@@ -30,7 +30,7 @@
                 let _this = this;
                 this.axios({
                     method: 'POST',
-                    url: '/api/auth-center/oauth/token?grant_type=password&username=' + this.form.name + '&password=' + this.form.password + '&scope=all',
+                    url: '/auth-center/oauth/token?grant_type=password&username=' + this.form.name + '&password=' + this.form.password + '&scope=all',
                     // headers: {'Authorization': 'Basic c3lzLWJhc2UtZGF0YTp1c2VyLXNlY3JldC04ODg4'},
                     auth: {
                         username: 'sys-base-data',

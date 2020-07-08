@@ -8,7 +8,7 @@
         created: function () {
             this.axios({
                 method: 'GET',
-                url: '/api/sys-base-data/getUsers'
+                url: '/sys-base-data/getUsers'
             }).then(function (response) {
                 console.log("=========response===========")
                 console.log(response);
