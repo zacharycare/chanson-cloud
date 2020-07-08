@@ -1,6 +1,7 @@
 package com.zachary.chanson.base.auth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -10,7 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 import javax.sql.DataSource;
 
@@ -23,11 +24,12 @@ public class AuthorizeServerConfig extends AuthorizationServerConfigurerAdapter 
     @Autowired
     UserDetailService userDetailService;
     @Autowired
-    TokenStore jwtTokenStore;
-    @Autowired
-    JwtAccessTokenConverter jwtAccessTokenConverter;
-    @Autowired
     DataSource dataSource;
+
+    @Bean
+    public TokenStore tokenStore() {
+        return new JdbcTokenStore(dataSource);
+    }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -45,6 +47,6 @@ public class AuthorizeServerConfig extends AuthorizationServerConfigurerAdapter 
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager)
                 .userDetailsService(userDetailService)
-                .tokenStore(jwtTokenStore).accessTokenConverter(jwtAccessTokenConverter);
+                .tokenStore(tokenStore());
     }
 }

@@ -1,4 +1,4 @@
-package com.zachary.chanson.base.sysbasedata.config;
+package com.zachary.chanson.busi.vending.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;

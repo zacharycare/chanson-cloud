@@ -1,8 +1,8 @@
 server:
-  port: 7997
+  port: 7996
 spring:
   application:
-    name: sys-base-data
+    name: vending-machine
   datasource:
     username: root
     password: 123456
