@@ -2,10 +2,20 @@
     <el-container>
         <el-header>Header</el-header>
         <el-container>
-            <el-aside width="200px">
-                <router-link :to="{name: 'sysUserInfo'}">用户管理</router-link> |
-                <router-link :to="{name: 'sysUserSave'}">保存用户</router-link>
-            </el-aside>
+            <el-menu class="el-menu-vertical" router>
+                <el-submenu index="5">
+                    <template slot="title">
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">用户管理</span>
+                    </template>
+                    <el-menu-item index="5-1" :route="{name: 'sysUserInfo'}">用户管理</el-menu-item>
+                    <el-menu-item index="5-2" :route="{name: 'sysUserSave'}">保存用户</el-menu-item>
+                </el-submenu>
+                <el-menu-item index="3" disabled>
+                    <i class="el-icon-document"></i>
+                    <span slot="title">导航三</span>
+                </el-menu-item>
+            </el-menu>
             <el-main>
                 <router-view/>
             </el-main>
@@ -45,5 +55,9 @@
         text-align: center;
         /*line-height: 160px;*/
         height: 100%;
+    }
+
+    .el-menu-vertical {
+        width: 200px;
     }
 </style>

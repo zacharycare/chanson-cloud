@@ -3,7 +3,10 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
-
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
   const routes = [
   {
     path: '/',
@@ -32,11 +35,6 @@ Vue.use(VueRouter)
           path: '',
           name: 'ConsoleHome',
           component: () => import(/* webpackChunkName: "about" */ '../components/ConsoleHome.vue')
-        },
-        {
-          path: 'menu1',
-          name: 'Menu1',
-          component: () => import(/* webpackChunkName: "about" */ '../components/Menu1.vue')
         },
         {
           path: 'sysUserSave',

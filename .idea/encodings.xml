@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/base-component/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/base-component/monitor/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/base-component/sys-base-data/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/busi-component/vending-machine/src/main/java" charset="UTF-8" />
   </component>
 </project>

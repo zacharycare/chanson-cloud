@@ -27,16 +27,25 @@
         methods: {
             onSubmit() {
                 console.log('submit!');
+                let _this = this;
                 this.axios({
                     method: 'POST',
-                    url: '/api/oauth/token?grant_type=password&username=' + this.form.name + '&password=' + this.form.password + '&scope=all',
-                    headers: {'Authorization': 'Basic c3lzLWJhc2UtZGF0YTp1c2VyLXNlY3JldC04ODg4'}
+                    url: '/api/auth-center/oauth/token?grant_type=password&username=' + this.form.name + '&password=' + this.form.password + '&scope=all',
+                    // headers: {'Authorization': 'Basic c3lzLWJhc2UtZGF0YTp1c2VyLXNlY3JldC04ODg4'},
+                    auth: {
+                        username: 'sys-base-data',
+                        password: 'user-secret-8888'
+                    }
                 }).then(function (response) {
+                    console.log("=========response===========")
                     console.log(response);
+                    localStorage.setItem("access_token", response.data.access_token);
+                    _this.$router.push("/console");
                 }).catch(function (error) {
-                    console.log(error);
+                    console.log("====error===========");
+                    console.log(error.response);
+                    _this.$message.error(error.response.data.error_description);
                 });
-                this.$router.push("/console");
             }
         }
     }
