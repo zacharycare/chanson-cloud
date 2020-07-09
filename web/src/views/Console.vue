@@ -1,6 +1,6 @@
 <template>
     <el-container>
-        <el-header>Header</el-header>
+        <el-header>Header<el-link type="primary" :underline="false" @click="logout">退出</el-link></el-header>
         <el-container>
             <el-menu class="el-menu-vertical" router>
                 <el-submenu index="5">
@@ -25,7 +25,19 @@
 
 <script>
     export default {
-        name: "Console"
+        name: "Console",
+        methods: {
+            logout() {
+                this.axios.get("/auth-center/sys-user/removeToken?accessToken=" + localStorage.getItem("access_token")).then(function (response) {
+                    // handle success
+                    console.log(response);
+                })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    });
+            }
+        }
     }
 </script>
 
