@@ -18,10 +18,12 @@ let config = {
 
 const _axios = axios.create(config);
 // 在实例已创建后修改默认值
-_axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem("access_token");
+// _axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem("access_token");
 _axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
+    config.headers['Authorization'] = "Bearer " + localStorage.getItem("access_token");
+    console.log(localStorage.getItem("access_token"));
     return config;
   },
   function(error) {

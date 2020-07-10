@@ -5,7 +5,7 @@
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
             <el-form-item label="密码">
-                <el-input v-model="form.password"></el-input>
+                <el-input v-model="form.password" show-password></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">登录</el-button>
@@ -53,7 +53,9 @@
 
 <style>
     .login {
+        height: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 </style>
