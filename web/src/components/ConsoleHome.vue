@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-button @click="onSubmit">下载文件</el-button>
+        it`s home...
     </div>
 </template>
 
@@ -8,12 +8,8 @@
     export default {
         name: "ConsoleHome",
         methods: {
-            onSubmit() {
-                console.log('submit!');
-                this.axios.get("/api/download").then((res) => {
-                    console.log("-----------------")
-                    console.log(res.data);
-                });
+            onLoad() {
+                console.log('load...');
             }
         }
     }

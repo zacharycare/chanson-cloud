@@ -45,6 +45,16 @@ VueRouter.prototype.push = function push(location) {
           path: 'sysUserInfo',
           name: 'sysUserInfo',
           component: () => import(/* webpackChunkName: "about" */ '../components/sysUser/sysUserInfo.vue')
+        },
+        {
+          path: 'releaseSpaceIndex',
+          name: 'releaseSpaceIndex',
+          component: () => import(/* webpackChunkName: "about" */ '../components/releaseSpace/index')
+        },
+        {
+          path: 'releaseSpaceEdit',
+          name: 'releaseSpaceEdit',
+          component: () => import(/* webpackChunkName: "about" */ '../components/releaseSpace/edit')
         }
       ]
     }

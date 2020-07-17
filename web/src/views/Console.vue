@@ -36,6 +36,14 @@
                     <el-menu-item index="2-1" :route="{name: 'sysUserInfo'}">用户管理</el-menu-item>
                     <el-menu-item index="2-2" :route="{name: 'sysUserSave'}">保存用户</el-menu-item>
                 </el-submenu>
+                <el-submenu index="3">
+                    <template slot="title">
+                        <i class="el-icon-user-solid"></i>
+                        <span slot="title">租赁管理</span>
+                    </template>
+                    <el-menu-item index="3-1" :route="{name: 'releaseSpaceIndex'}">空间资源</el-menu-item>
+                    <el-menu-item index="3-2" :route="{name: 'releaseSpaceEdit'}">空间编辑</el-menu-item>
+                </el-submenu>
                 <el-menu-item index="3" disabled>
                     <i class="el-icon-document"></i>
                     <span slot="title">导航三</span>
@@ -83,7 +91,7 @@
     .el-main {
         background-color: #E9EEF3;
         color: #333;
-        text-align: center;
+        /*text-align: center;*/
         /*line-height: 160px;*/
         height: 100%;
     }

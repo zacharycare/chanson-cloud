@@ -3,8 +3,8 @@ package com.zachary.chanson.base.common.util;
 import lombok.Data;
 
 @Data
-public class ResultInfo<T> {
+public class ResultInfo {
     private String code;
     private String message;
-    private T data;
+    private Object data;
 }
