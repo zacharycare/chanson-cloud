@@ -24,9 +24,10 @@ logging:
   level:
       com:
         zachary:
-          base:
-            sysbasedata:
-              mapper: debug
+          chanson:
+            busi:
+              vending:
+                mapper: debug
 security:
   oauth2:
     resource:

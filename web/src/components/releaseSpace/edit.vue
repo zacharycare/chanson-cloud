@@ -13,7 +13,7 @@
             <el-input v-model="infoForm.remark"></el-input>
         </el-form-item>
         <el-form-item>
-            <el-button type="primary" @click="submitForm('infoForm')">立即创建</el-button>
+            <el-button type="primary" @click="submitForm('infoForm')">立即保存</el-button>
             <el-button @click="resetForm('infoForm')">重置</el-button>
         </el-form-item>
     </el-form>
