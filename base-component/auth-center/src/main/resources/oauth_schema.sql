@@ -12,6 +12,13 @@ create table oauth_client_details (
   additional_information VARCHAR(4096),
   autoapprove VARCHAR(256)
 );
+INSERT INTO oauth_client_details
+(client_id, client_secret, scope, authorized_grant_types,
+ web_server_redirect_uri, authorities, access_token_validity,
+ refresh_token_validity, additional_information, autoapprove)
+VALUES
+('sys-base-data', '$2a$10$o2l5kA7z.Caekp72h5kU7uqdTDrlamLq.57M1F6ulJln9tRtOJufq', 'all',
+ 'authorization_code,refresh_token,password', null, null, 3600, 36000, null, true);
 
 create table oauth_client_token (
   token_id VARCHAR(256),

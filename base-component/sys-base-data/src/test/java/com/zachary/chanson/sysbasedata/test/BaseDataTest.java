@@ -23,20 +23,20 @@ public class BaseDataTest {
     SysUserService sysUserService;
 //    @Autowired
 //    SysRoleService sysRoleService;
-    @Autowired
-    SysPermissionsService sysPermissionsService;
-    @Autowired
-    SysPermissionsMapper sysPermissionsMapper;
+//    @Autowired
+//    SysPermissionsService sysPermissionsService;
+//    @Autowired
+//    SysPermissionsMapper sysPermissionsMapper;
 
     @Test
     public void contextLoads() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         SysUser sysUser = new SysUser();
-        sysUser.setUsername("zachary1");
-        sysUser.setPassword(encoder.encode("zachary"));
+        sysUser.setUsername("admin");
+        sysUser.setPassword(encoder.encode("1234"));
         sysUser.setEmail("qwe@qq.com");
         sysUser.setCreatedBy("system");
-        sysUser.setCreatedDate(new Date());
+//        sysUser.setCreatedDate(new Date());
         boolean flag = sysUserService.save(sysUser);
         System.out.println("保存用户是否成功：" + flag);
         System.out.println("----------------------------");
@@ -67,7 +67,7 @@ public class BaseDataTest {
     @Test
     public void contextLoadsSysPermissions() {
         System.out.println("======test======");
-        System.out.println(sysPermissionsService.selectSysPermissionsCount());
-        System.out.println(sysPermissionsMapper.selectSysPermissionsCount());
+//        System.out.println(sysPermissionsService.selectSysPermissionsCount());
+//        System.out.println(sysPermissionsMapper.selectSysPermissionsCount());
     }
 }
