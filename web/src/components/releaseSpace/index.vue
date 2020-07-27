@@ -11,8 +11,8 @@
             </div>
             <el-table :data="dataList" style="width: 100%"  @selection-change="handleSelectionChange">
                 <el-table-column type="selection"></el-table-column>
-                <el-table-column prop="name" label="日期" width="180"></el-table-column>
-                <el-table-column prop="code" label="姓名" width="180"></el-table-column>
+                <el-table-column prop="name" label="空间名称" width="180"></el-table-column>
+                <el-table-column prop="code" label="空间代码" width="180"></el-table-column>
                 <el-table-column prop="address" label="地址"></el-table-column>
                 <el-table-column prop="remark" label="备注"></el-table-column>
             </el-table>

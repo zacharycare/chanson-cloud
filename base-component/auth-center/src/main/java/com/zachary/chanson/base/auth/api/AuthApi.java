@@ -12,7 +12,7 @@ import java.security.Principal;
 @RestController
 @RequestMapping(value = "sys-user")
 @Slf4j
-public class SysUserController {
+public class AuthApi {
 
     @GetMapping(value = "current")
     public Principal user(Principal principal) {

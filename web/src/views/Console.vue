@@ -31,14 +31,14 @@
                 <el-submenu index="2">
                     <template slot="title">
                         <i class="el-icon-user-solid"></i>
-                        <span slot="title">系统用户</span>
+                        <span slot="title">系统管理</span>
                     </template>
                     <el-menu-item index="2-1" :route="{name: 'sysUserInfo'}">用户管理</el-menu-item>
                     <el-menu-item index="2-2" :route="{name: 'sysUserSave'}">保存用户</el-menu-item>
                 </el-submenu>
                 <el-submenu index="3">
                     <template slot="title">
-                        <i class="el-icon-user-solid"></i>
+                        <i class="el-icon-office-building"></i>
                         <span slot="title">租赁管理</span>
                     </template>
                     <el-menu-item index="3-1" :route="{name: 'releaseSpaceIndex'}">空间资源</el-menu-item>

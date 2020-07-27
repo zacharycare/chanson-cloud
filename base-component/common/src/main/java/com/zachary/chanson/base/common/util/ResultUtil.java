@@ -27,4 +27,12 @@ public class ResultUtil {
         return failure(resultCode, null);
     }
 
+    public static ResultInfo failure(String message) {
+        ResultInfo resultInfo = new ResultInfo();
+        resultInfo.setCode(ResultCode.FAILURE.getCode());
+        resultInfo.setMessage(message);
+        resultInfo.setData(null);
+        return resultInfo;
+    }
+
 }

@@ -37,9 +37,9 @@ VueRouter.prototype.push = function push(location) {
           component: () => import(/* webpackChunkName: "about" */ '../components/ConsoleHome.vue')
         },
         {
-          path: 'sysUserSave',
-          name: 'sysUserSave',
-          component: () => import(/* webpackChunkName: "about" */ '../components/sysUser/save.vue')
+          path: 'sysUserEdit',
+          name: 'sysUserEdit',
+          component: () => import(/* webpackChunkName: "about" */ '../components/sysUser/edit.vue')
         },
         {
           path: 'sysUserInfo',

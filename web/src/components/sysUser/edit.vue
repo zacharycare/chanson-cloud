@@ -18,7 +18,7 @@
 
 <script>
     export default {
-        name: "sysUserSave",
+        name: "sysUserEdit",
         data() {
             return {
                 labelPosition: 'left',
