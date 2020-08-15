@@ -59,7 +59,6 @@ public class BaseDataTest {
     public void contextLoadsSysUser() {
         SysUser sysUserTemp = new SysUser();
         sysUserTemp.setUsername("admin1");
-        sysUserTemp.setStatus('0');
         SysUser sysUser = sysUserService.getOne(new QueryWrapper<SysUser>(sysUserTemp));
         System.out.println(sysUser);
     }

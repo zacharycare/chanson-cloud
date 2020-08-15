@@ -27,3 +27,13 @@ logging:
         base:
           auth:
             mapper: debug
+security:
+  oauth2:
+    client:
+      clientId: auth-center
+      clientSecret: auth-center@chanson
+      accessTokenUri: http://localhost:${server.port}/oauth/token
+      grant-type: client_credentials
+      scope: service
+    resource:
+      user-info-uri: http://localhost:${server.port}/sys-user/current

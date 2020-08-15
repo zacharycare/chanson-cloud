@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="sys-base-data" />
+        <module name="gateway" />
         <module name="auth-center" />
         <module name="release" />
-        <module name="gateway" />
         <module name="eureka" />
+        <module name="sys-base-data" />
         <module name="vending-machine" />
         <module name="monitor" />
         <module name="common" />

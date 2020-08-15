@@ -1,5 +1,6 @@
 package com.zachary.chanson.base.sysbasedata.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zachary.chanson.base.common.entity.SysUser;
 import com.zachary.chanson.base.common.util.ResultCode;
 import com.zachary.chanson.base.common.util.ResultInfo;
@@ -9,10 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -44,5 +42,15 @@ public class SysUserController {
             return ResultUtil.failure(ResultCode.FAILURE,e.getMessage());
         }
         return ResultUtil.failure(ResultCode.FAILURE);
+    }
+
+    /**
+     * 获取个人信息
+     * @return
+     */
+    @PostMapping(value = "getPersonInfo")
+    public ResultInfo getSysUserByUsername(@RequestBody SysUser sysUser) {
+        sysUser = sysUserService.getOne(new QueryWrapper<SysUser>().eq("username", sysUser.getUsername()));
+        return ResultUtil.success(sysUser);
     }
 }

@@ -20,7 +20,7 @@ public class User extends BaseEntity {
 
     private String gender;
 
-    private String telNumber;
+    private Long telNumber;
 
     private String email;
 
