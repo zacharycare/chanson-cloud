@@ -4,7 +4,18 @@
             <el-input v-model="infoForm.username"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
-            <el-input v-model="infoForm.password"></el-input>
+            <el-input v-model="infoForm.password"><el-button slot="append" @click="initPassword">使用初始密码</el-button></el-input>
+        </el-form-item>
+        <el-form-item label="出生日期" prop="birthday">
+            <el-date-picker v-model="infoForm.birthday" type="date" placeholder="选择日期"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="性别" prop="gender">
+            <el-radio v-model="infoForm.gender" label="1">男</el-radio>
+            <el-radio v-model="infoForm.gender" label="2">女</el-radio>
+            <el-radio v-model="infoForm.gender" label="3">未知</el-radio>
+        </el-form-item>
+        <el-form-item label="手机号" prop="tel">
+            <el-input v-model="infoForm.tel"></el-input>
         </el-form-item>
         <el-form-item label="邮箱" prop="email">
             <el-input v-model="infoForm.email"></el-input>
@@ -12,6 +23,11 @@
         <el-form-item>
             <el-button type="primary" @click="submitForm('infoForm')">立即创建</el-button>
             <el-button @click="resetForm('infoForm')">重置</el-button>
+            <el-popconfirm
+                    title="这是一段内容确定删除吗？"
+            >
+                <el-button slot="reference">删除</el-button>
+            </el-popconfirm>
         </el-form-item>
     </el-form>
 </template>
@@ -25,14 +41,20 @@
                 infoForm: {
                     username: '',
                     password: '',
+                    birthday: '',
+                    gender: '',
+                    tel: '',
                     email: ''
                 },
                 infoRules: {
                     username: [
                         { required: true, message: '请输入用户名', trigger: 'blur' }
                     ],
-                    email: [
-                        { required: true, message: '请输入用户邮箱', trigger: 'blur' },
+                    gender: [
+                        { required: true, message: '请选择性别', trigger: 'blur' }
+                    ],
+                    tel: [
+                        { required: true, message: '请输入用户手机号', trigger: 'blur' },
                     ]
                 }
             }
@@ -58,6 +80,9 @@
             },
             resetForm(formName) {
                 this.$refs[formName].resetFields();
+            },
+            initPassword() {
+                this.infoForm.password = '1234';
             }
         }
     }

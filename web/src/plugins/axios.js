@@ -2,6 +2,7 @@
 
 import Vue from 'vue';
 import axios from "axios";
+import router from "@/router";
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
@@ -36,10 +37,22 @@ _axios.interceptors.request.use(
 _axios.interceptors.response.use(
   function(response) {
     // Do something with response data
+    console.log("interceptor data...");
     return response;
   },
   function(error) {
     // Do something with response error
+    console.log("interceptor error...");
+    console.log(error.response);
+    if (error.response && (error.response.status === 401) && (error.response.statusText === 'Unauthorized')) {
+      console.log("401...");
+      router.replace({
+        path: '/login',
+        // query: {
+        //   redirect: router.currentRoute.fullPath
+        // }
+      });
+    }
     return Promise.reject(error);
   }
 );

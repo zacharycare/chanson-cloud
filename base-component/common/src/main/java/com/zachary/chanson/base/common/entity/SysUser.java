@@ -17,6 +17,7 @@ public class SysUser implements Serializable {
     private Long tel;
     private String email;
     private String gender;
+    private String birthday;
     private String registerSource;
     private String status;
     private String createdBy;

@@ -34,7 +34,7 @@
                         <span slot="title">系统管理</span>
                     </template>
                     <el-menu-item index="2-1" :route="{name: 'sysUserInfo'}">用户管理</el-menu-item>
-                    <el-menu-item index="2-2" :route="{name: 'sysUserSave'}">保存用户</el-menu-item>
+                    <el-menu-item index="2-2" :route="{name: 'sysUserEdit'}">保存用户</el-menu-item>
                 </el-submenu>
                 <el-submenu index="3">
                     <template slot="title">
