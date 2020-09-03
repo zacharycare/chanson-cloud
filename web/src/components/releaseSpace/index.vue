@@ -84,8 +84,5 @@
 </script>
 
 <style scoped>
-    .toolbar .el-link{
-        margin-right: 20px;
-        margin-bottom: 10px;
-    }
+    @import "../../css/common.css";
 </style>

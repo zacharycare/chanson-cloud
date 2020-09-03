@@ -7,7 +7,7 @@
             <el-input v-model="infoForm.password"><el-button slot="append" @click="initPassword">使用初始密码</el-button></el-input>
         </el-form-item>
         <el-form-item label="出生日期" prop="birthday">
-            <el-date-picker v-model="infoForm.birthday" type="date" placeholder="选择日期"></el-date-picker>
+            <el-date-picker v-model="infoForm.birthday" type="date" placeholder="选择日期" value-format="yyyy-MM-dd"></el-date-picker>
         </el-form-item>
         <el-form-item label="性别" prop="gender">
             <el-radio v-model="infoForm.gender" label="1">男</el-radio>
@@ -44,7 +44,8 @@
                     birthday: '',
                     gender: '',
                     tel: '',
-                    email: ''
+                    email: '',
+                    registerSource: 'system'
                 },
                 infoRules: {
                     username: [
@@ -84,6 +85,11 @@
             initPassword() {
                 this.infoForm.password = '1234';
             }
+        },
+        created: function () {
+            console.log("================");
+            console.log(this.$route.params);
+            this.infoForm = this.$route.params;
         }
     }
 </script>
