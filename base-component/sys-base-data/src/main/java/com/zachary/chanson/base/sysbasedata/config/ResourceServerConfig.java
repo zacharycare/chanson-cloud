@@ -21,6 +21,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/login/**").permitAll().anyRequest().authenticated();
+        http.authorizeRequests()
+                .antMatchers("/login/**").permitAll()
+                .antMatchers("/actuator/**").permitAll()//不对springboot-admin监控的请求进行权限校验
+                .antMatchers("/instances/**").permitAll()//不对springboot-admin监控的实例信息请求进行权限校验
+        .anyRequest().authenticated();
     }
 }
