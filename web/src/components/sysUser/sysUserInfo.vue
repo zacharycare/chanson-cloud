@@ -11,6 +11,7 @@
             </div>
             <el-table :data="dataList" style="width: 100%"  @selection-change="handleSelectionChange">
                 <el-table-column type="selection"></el-table-column>
+                <el-table-column prop="id" label="ID" width="180"></el-table-column>
                 <el-table-column prop="username" label="用户名" width="180"></el-table-column>
                 <el-table-column prop="nickName" label="昵称" width="180"></el-table-column>
                 <el-table-column prop="tel" label="手机"></el-table-column>
@@ -56,7 +57,26 @@
                 this.$router.push({name:'sysUserEdit',params: this.multipleSelection[0]})
             },
             deleteSelected() {
-
+                if (this.multipleSelection.length < 1) {
+                    this.$message.error('请至少选择一条记录进行删除');
+                    return;
+                }
+                let ids = [];
+                for (let i = 0;i < this.multipleSelection.length;i++) {
+                    ids.push(this.multipleSelection[i].id);
+                }
+                // const _this = this;
+                this.axios({
+                    method: 'POST',
+                    url: '/sys-base-data/delete',
+                    data: JSON.stringify(ids)
+                }).then(function (response) {
+                    console.log("=========response===========")
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log("====error===========");
+                    console.log(error.response);
+                });
             }
         }
     }

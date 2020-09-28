@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -42,6 +43,17 @@ public class SysUserController {
             return ResultUtil.failure(ResultCode.FAILURE,e.getMessage());
         }
         return ResultUtil.failure(ResultCode.FAILURE);
+    }
+
+    @PostMapping(value = "delete", name = "删除系统用户")
+    public ResultInfo delSysUser(@RequestBody String[] ids) {
+        try {
+            sysUserService.removeByIds(Arrays.asList(ids));
+            return ResultUtil.success(null);
+        } catch (Exception e) {
+            log.error("删除系统用户异常", e);
+            return ResultUtil.failure(ResultCode.FAILURE,e.getMessage());
+        }
     }
 
     /**

@@ -2,10 +2,10 @@
     <div id="login" class="login">
         <el-form ref="form" :model="form" label-width="80px" style="width: 400px">
             <el-form-item label="用户名">
-                <el-input v-model="form.name"></el-input>
+                <el-input v-model="form.name" autofocus></el-input>
             </el-form-item>
             <el-form-item label="密码">
-                <el-input v-model="form.password" show-password></el-input>
+                <el-input v-model="form.password" show-password @change="onSubmit"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">登录</el-button>
@@ -27,6 +27,9 @@
         methods: {
             onSubmit() {
                 console.log('submit!');
+                const loading = this.$loading({
+                    lock: true
+                });
                 let _this = this;
                 this.axios({
                     method: 'POST',
@@ -40,10 +43,12 @@
                     console.log("=========response===========")
                     console.log(response);
                     localStorage.setItem("access_token", response.data.access_token);
+                    loading.close();
                     _this.$router.push("/console");
                 }).catch(function (error) {
                     console.log("====error===========");
                     console.log(error.response);
+                    loading.close();
                     _this.$message.error(error.response.data.error_description);
                 });
             }

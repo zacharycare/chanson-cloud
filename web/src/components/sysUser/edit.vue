@@ -1,9 +1,11 @@
 <template>
     <el-form :model="infoForm" ref="infoForm" :rules="infoRules" :label-position="labelPosition" label-width="80px">
+        <span v-show="isEdit">编辑中...</span>
+        <el-input v-model="infoForm.id" v-show="false"></el-input>
         <el-form-item label="用户名" prop="username">
             <el-input v-model="infoForm.username"></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
+        <el-form-item label="密码" prop="password" v-if="!isEdit">
             <el-input v-model="infoForm.password"><el-button slot="append" @click="initPassword">使用初始密码</el-button></el-input>
         </el-form-item>
         <el-form-item label="出生日期" prop="birthday">
@@ -21,7 +23,7 @@
             <el-input v-model="infoForm.email"></el-input>
         </el-form-item>
         <el-form-item>
-            <el-button type="primary" @click="submitForm('infoForm')">立即创建</el-button>
+            <el-button type="primary" @click="submitForm('infoForm')">保存</el-button>
             <el-button @click="resetForm('infoForm')">重置</el-button>
             <el-popconfirm
                     title="这是一段内容确定删除吗？"
@@ -38,7 +40,9 @@
         data() {
             return {
                 labelPosition: 'left',
+                isEdit: false,
                 infoForm: {
+                    id: null,
                     username: '',
                     password: '',
                     birthday: '',
@@ -87,8 +91,9 @@
             }
         },
         created: function () {
-            console.log("================");
-            console.log(this.$route.params);
+            if (this.$route.params.id) {
+                this.isEdit = true;
+            }
             this.infoForm = this.$route.params;
         }
     }
