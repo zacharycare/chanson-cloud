@@ -8,6 +8,9 @@
         <el-form-item label="密码" prop="password" v-if="!isEdit">
             <el-input v-model="infoForm.password"><el-button slot="append" @click="initPassword">使用初始密码</el-button></el-input>
         </el-form-item>
+        <el-form-item label="昵称" prop="nickName">
+            <el-input v-model="infoForm.nickName"></el-input>
+        </el-form-item>
         <el-form-item label="出生日期" prop="birthday">
             <el-date-picker v-model="infoForm.birthday" type="date" placeholder="选择日期" value-format="yyyy-MM-dd"></el-date-picker>
         </el-form-item>
@@ -45,6 +48,7 @@
                     id: null,
                     username: '',
                     password: '',
+                    nickName: '',
                     birthday: '',
                     gender: '',
                     tel: '',
@@ -91,8 +95,10 @@
             }
         },
         created: function () {
+            //编辑时去掉密码更新
             if (this.$route.params.id) {
                 this.isEdit = true;
+                this.$route.params.password = null;
             }
             this.infoForm = this.$route.params;
         }
