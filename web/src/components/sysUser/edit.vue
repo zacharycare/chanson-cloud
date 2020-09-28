@@ -39,7 +39,7 @@
         name: "sysUserEdit",
         data() {
             return {
-                labelPosition: 'left',
+                labelPosition: 'right',
                 isEdit: false,
                 infoForm: {
                     id: null,

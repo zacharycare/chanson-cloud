@@ -56,6 +56,16 @@ public class SysUserController {
         }
     }
 
+    @GetMapping(value = "detail", name = "系统用户详情")
+    public ResultInfo detailSysUser(String id) {
+        try {
+            return ResultUtil.success(sysUserService.getById(id));
+        } catch (Exception e) {
+            log.error("获取系统用户详情异常", e);
+            return ResultUtil.failure(ResultCode.FAILURE,e.getMessage());
+        }
+    }
+
     /**
      * 获取个人信息
      * @return

@@ -24,8 +24,10 @@ public class SysUser implements Serializable {
     private String registerSource;
     private String status;
     private String createdBy;
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
     private String updatedBy;
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date updatedDate;
     @TableLogic
     private Integer deleted;
