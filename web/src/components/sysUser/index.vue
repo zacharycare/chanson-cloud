@@ -17,33 +17,25 @@
                 <el-table-column prop="tel" label="手机"></el-table-column>
                 <el-table-column prop="email" label="邮箱"></el-table-column>
             </el-table>
+            <pagination :url="dataUrl" @transferData="loadData"></pagination>
         </el-main>
     </el-container>
 </template>
 
 <script>
+    import pagination from '../common/pagination';
     export default {
         name: "sysUserInfo",
+        components: {
+            'pagination': pagination
+        },
         data() {
             return {
+                dataUrl: '/sys-base-data/sysUser/selectPage',
                 dataList: [],
                 totalCount: 0,
                 multipleSelection: []
             }
-        },
-        created: function () {
-            const _this = this;
-            this.axios({
-                method: 'GET',
-                url: '/sys-base-data/getUsers'
-            }).then(function (response) {
-                console.log("=========response===========")
-                console.log(response);
-                _this.dataList = response.data;
-            }).catch(function (error) {
-                console.log("====error===========");
-                console.log(error.response);
-            });
         },
         methods: {
             handleSelectionChange(val) {
@@ -68,7 +60,7 @@
                 // const _this = this;
                 this.axios({
                     method: 'POST',
-                    url: '/sys-base-data/delete',
+                    url: '/sys-base-data/sysUser/delete',
                     data: JSON.stringify(ids)
                 }).then(function (response) {
                     console.log("=========response===========")
@@ -77,6 +69,9 @@
                     console.log("====error===========");
                     console.log(error.response);
                 });
+            },
+            loadData(data) {
+                this.dataList = data;
             }
         }
     }

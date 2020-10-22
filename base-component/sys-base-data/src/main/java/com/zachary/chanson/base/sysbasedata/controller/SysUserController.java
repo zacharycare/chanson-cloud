@@ -1,6 +1,8 @@
 package com.zachary.chanson.base.sysbasedata.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zachary.chanson.base.common.entity.SysUser;
 import com.zachary.chanson.base.common.util.ResultCode;
 import com.zachary.chanson.base.common.util.ResultInfo;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
+@RequestMapping(value = "sysUser")
 public class SysUserController {
     @Autowired
     SysUserService sysUserService;
@@ -28,18 +32,27 @@ public class SysUserController {
         return sysUserService.list();
     }
 
+    @PostMapping(value = "selectPage", name = "分页查询系统用户")
+    public IPage<SysUser> selectPageData(@RequestBody Map<String, Integer> page) {
+        return sysUserService.page(new Page<>(page.get("current"), page.get("pageSize")));
+    }
+
     @PostMapping(value = "save", name = "保存系统用户--新增或更新")
     public ResultInfo saveSysUser(@RequestBody SysUser sysUser, Principal principal) {
         try {
             log.info("当前操作用户-->{}", principal.getName());
-            sysUser.setCreatedBy(principal.getName());
-            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
+            if (sysUser.getId() == null){   //新增
+                sysUser.setCreatedBy(principal.getName());
+                PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
+            }
+            sysUser.setUpdatedBy(principal.getName());
             boolean result = sysUserService.saveOrUpdate(sysUser);
             if (result) {
                 return ResultUtil.success(null);
             }
         } catch (Exception e) {
+            log.error("保存系统用户异常", e);
             return ResultUtil.failure(ResultCode.FAILURE,e.getMessage());
         }
         return ResultUtil.failure(ResultCode.FAILURE);

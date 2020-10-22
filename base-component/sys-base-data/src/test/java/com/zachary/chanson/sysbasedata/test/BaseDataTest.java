@@ -1,6 +1,7 @@
 package com.zachary.chanson.sysbasedata.test;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zachary.chanson.base.common.entity.SysUser;
 import com.zachary.chanson.base.sysbasedata.SysBaseDataApplication;
 import com.zachary.chanson.base.sysbasedata.mapper.SysPermissionsMapper;
@@ -66,7 +67,6 @@ public class BaseDataTest {
     @Test
     public void contextLoadsSysPermissions() {
         System.out.println("======test======");
-//        System.out.println(sysPermissionsService.selectSysPermissionsCount());
-//        System.out.println(sysPermissionsMapper.selectSysPermissionsCount());
+        System.out.println(sysUserService.page(new Page<>(2, 2)));
     }
 }

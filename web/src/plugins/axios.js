@@ -24,7 +24,6 @@ _axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
     config.headers['Authorization'] = "Bearer " + localStorage.getItem("access_token");
-    console.log(localStorage.getItem("access_token"));
     return config;
   },
   function(error) {
@@ -37,7 +36,6 @@ _axios.interceptors.request.use(
 _axios.interceptors.response.use(
   function(response) {
     // Do something with response data
-    console.log("interceptor data...");
     return response;
   },
   function(error) {

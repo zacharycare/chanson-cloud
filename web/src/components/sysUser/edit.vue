@@ -75,7 +75,7 @@
                     if (valid) {
                         this.axios({
                             method: 'POST',
-                            url: '/sys-base-data/save',
+                            url: '/sys-base-data/sysUser/save',
                             data: JSON.stringify(this.infoForm)
                         }).then(function (response) {
                             console.log(response);
@@ -101,8 +101,8 @@
             if (this.$route.params.id) {
                 this.isEdit = true;
                 this.$route.params.password = null;
+                this.infoForm = this.$route.params;
             }
-            this.infoForm = this.$route.params;
         }
     }
 </script>
