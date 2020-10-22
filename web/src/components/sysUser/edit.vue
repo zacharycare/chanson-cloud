@@ -70,6 +70,7 @@
         },
         methods: {
             submitForm(formName) {
+                let _this = this;
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         this.axios({
@@ -78,6 +79,7 @@
                             data: JSON.stringify(this.infoForm)
                         }).then(function (response) {
                             console.log(response);
+                            _this.$message.success(response.data.message);
                         }).catch(function (error) {
                             console.log(error);
                         });
