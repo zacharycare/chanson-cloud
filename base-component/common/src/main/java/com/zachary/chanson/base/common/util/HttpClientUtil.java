@@ -20,10 +20,15 @@ public class HttpClientUtil {
         }
     }
 
-    public static HttpResponse get(String uri) throws IOException, InterruptedException {
+    public static HttpResponse<String> get(String uri) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newBuilder().build();
         HttpRequest request = HttpRequest.newBuilder().GET().uri(URI.create(uri)).build();
-        HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        return response;
+        return client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    public static HttpResponse<String> post(String uri, String body) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newBuilder().build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(uri)).POST(HttpRequest.BodyPublishers.ofString(body)).header("Content-Type", "application/json").build();
+        return client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 }
