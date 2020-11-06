@@ -37,6 +37,16 @@ VueRouter.prototype.push = function push(location) {
           component: () => import(/* webpackChunkName: "about" */ '../components/ConsoleHome.vue')
         },
         {
+          path: 'sysRoleEdit',
+          name: 'sysRoleEdit',
+          component: () => import(/* webpackChunkName: "about" */ '../components/sysRole/edit.vue')
+        },
+        {
+          path: 'sysRoleInfo',
+          name: 'sysRoleInfo',
+          component: () => import(/* webpackChunkName: "about" */ '../components/sysRole/index.vue')
+        },
+        {
           path: 'sysUserEdit',
           name: 'sysUserEdit',
           component: () => import(/* webpackChunkName: "about" */ '../components/sysUser/edit.vue')

@@ -40,7 +40,7 @@
                 const _this = this;
                 this.axios({
                     method: 'POST',
-                    url: '/sys-base-data/sysUser/selectPage',
+                    url: _this.url,
                     data: {
                         current: this.current,
                         pageSize: this.pageSize
