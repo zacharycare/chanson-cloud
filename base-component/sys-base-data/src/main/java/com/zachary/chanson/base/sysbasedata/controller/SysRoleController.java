@@ -9,13 +9,11 @@ import com.zachary.chanson.base.common.util.ResultUtil;
 import com.zachary.chanson.base.sysbasedata.service.SysRoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -45,6 +43,11 @@ public class SysRoleController {
     @PostMapping(value = "selectPage", name = "分页查询系统角色")
     public IPage<SysRole> selectPageData(@RequestBody Map<String, Integer> page) {
         return sysRoleService.page(new Page<>(page.get("current"), page.get("pageSize")));
+    }
+
+    @GetMapping(value = "listAll", name = "查询所有系统角色")
+    public List<SysRole> selectAll() {
+        return sysRoleService.list();
     }
 
     @PostMapping(value = "delete", name = "删除系统用户")

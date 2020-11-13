@@ -12,6 +12,7 @@
             <el-table :data="dataList" style="width: 100%"  @selection-change="handleSelectionChange">
                 <el-table-column type="selection"></el-table-column>
                 <el-table-column prop="id" label="ID" width="180"></el-table-column>
+                <el-table-column prop="roleCode" label="角色代码" width="180"></el-table-column>
                 <el-table-column prop="roleName" label="角色名" width="180"></el-table-column>
                 <el-table-column prop="roleDesc" label="角色描述" width="180"></el-table-column>
                 <el-table-column prop="status" label="状态"></el-table-column>

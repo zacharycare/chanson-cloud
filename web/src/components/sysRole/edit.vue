@@ -2,6 +2,9 @@
     <el-form :model="infoForm" ref="infoForm" :rules="infoRules" :label-position="labelPosition" label-width="80px">
         <span v-show="isEdit">编辑中...</span>
         <el-input v-model="infoForm.id" v-show="false"></el-input>
+        <el-form-item label="角色代码" prop="roleCode">
+            <el-input v-model="infoForm.roleCode" placeholder="ROLE_***"></el-input>
+        </el-form-item>
         <el-form-item label="角色名" prop="roleName">
             <el-input v-model="infoForm.roleName"></el-input>
         </el-form-item>
@@ -33,11 +36,15 @@
                 isEdit: false,
                 infoForm: {
                     id: null,
+                    roleCode: '',
                     roleName: '',
                     roleDesc: '',
                     status: ''
                 },
                 infoRules: {
+                    roleCode: [
+                        { required: true, message: '请输入角色代码，请以“ROLE_”开头', trigger: 'blur' }
+                    ],
                     roleName: [
                         { required: true, message: '请输入角色名', trigger: 'blur' }
                     ],

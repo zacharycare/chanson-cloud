@@ -3,6 +3,8 @@ package com.zachary.chanson.base.sysbasedata.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zachary.chanson.base.common.dto.AuthorizeSysUserRole;
+import com.zachary.chanson.base.common.dto.SysRoleAndChecked;
 import com.zachary.chanson.base.common.entity.SysUser;
 import com.zachary.chanson.base.common.util.ResultCode;
 import com.zachary.chanson.base.common.util.ResultInfo;
@@ -77,6 +79,16 @@ public class SysUserController {
             log.error("获取系统用户详情异常", e);
             return ResultUtil.failure(ResultCode.FAILURE,e.getMessage());
         }
+    }
+
+    @PostMapping(value = "selectAllSysRoleAndChecked", name = "查询所有系统角色并关联当前用户")
+    public List<SysRoleAndChecked> selectAllSysRoleAndChecked(@RequestBody SysUser sysUser) {
+        return sysUserService.selectSysRoleAndChecked(sysUser.getId());
+    }
+
+    @PostMapping(value = "authorizeSysRole")
+    public ResultInfo authorizeSysRole(@RequestBody AuthorizeSysUserRole authorizeSysUserRole, Principal principal) {
+        return sysUserService.authorizeSysRole(authorizeSysUserRole, principal);
     }
 
     /**

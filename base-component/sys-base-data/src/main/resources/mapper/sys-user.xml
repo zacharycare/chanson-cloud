@@ -10,4 +10,9 @@
         select r.role_name from zxxr.sys_user u,zxxr.sys_user_role ur,zxxr.sys_role r where u.id = ur.sys_user_id and ur.sys_role_id = r.id
         and u.status = 1 and ur.status = 1 and r.status = 1 and u.username = #{username}
     </select>
+
+    <select id="selectSysRoleAndChecked" resultType="com.zachary.chanson.base.common.dto.SysRoleAndChecked">
+        SELECT r.*,ur.sys_user_id FROM sys_role r LEFT JOIN sys_user_role ur ON r.id = ur.sys_role_id AND ur.sys_user_id = #{sysUserId} AND ur.`status` = '1' AND ur.deleted = 0 WHERE r.`status` = '1' and r.deleted = 0
+    </select>
+
 </mapper>
